@@ -24,13 +24,13 @@ Then install the Development Guidelines plugin:
 
 ## Available Commands
 
-### `/generate-development-guideline`
+### `/development-guidelines:guidelines-generate`
 
 **Description**: Generates comprehensive development guideline documents for any programming language, following a standardized template structure. The command performs extensive research, analyzes language characteristics, and creates a complete guideline document with code examples, best practices, and tool recommendations.
 
 **Syntax**:
 ```bash
-/generate-development-guideline <language-name> [--param=value ...]
+/development-guidelines:guidelines-generate <language-name> [--param=value ...]
 ```
 
 **Parameters** (all optional):
@@ -49,19 +49,19 @@ Then install the Development Guidelines plugin:
 **Examples**:
 ```bash
 # Generate basic guideline for a language
-/generate-development-guideline Python
-/generate-development-guideline TypeScript
-/generate-development-guideline Rust
-/generate-development-guideline Go
+/development-guidelines:guidelines-generate Python
+/development-guidelines:guidelines-generate TypeScript
+/development-guidelines:guidelines-generate Rust
+/development-guidelines:guidelines-generate Go
 
 # Generate with specific library preferences
-/generate-development-guideline Go --orm=sqlc --web=chi --db=pgx --testing=testify
+/development-guidelines:guidelines-generate Go --orm=sqlc --web=chi --db=pgx --testing=testify
 
-/generate-development-guideline TypeScript --orm=prisma --web=express --testing=jest --validation=zod
+/development-guidelines:guidelines-generate TypeScript --orm=prisma --web=express --testing=jest --validation=zod
 
-/generate-development-guideline Python --orm=sqlalchemy --web=fastapi --logging=structlog --testing=pytest
+/development-guidelines:guidelines-generate Python --orm=sqlalchemy --web=fastapi --logging=structlog --testing=pytest
 
-/generate-development-guideline Rust --orm=diesel --web=axum --async=tokio --serialization=serde
+/development-guidelines:guidelines-generate Rust --orm=diesel --web=axum --async=tokio --serialization=serde
 ```
 
 **Workflow**:

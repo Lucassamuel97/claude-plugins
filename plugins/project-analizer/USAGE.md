@@ -24,13 +24,13 @@ Then install the Project Analyzer plugin:
 
 ## Available Commands
 
-### `/generate-architectural-report`
+### `/project-analizer:generate-architectural-report`
 
 **Description**: Runs a complete architectural analysis workflow including dependency auditing, architectural analysis, and component deep-dive analysis. Generates comprehensive reports with a MANIFEST index tracking all generated reports.
 
 **Syntax**:
 ```bash
-/generate-architectural-report [--project-folder=PATH] [--output-folder=PATH] [--ignore-folders=LIST]
+/project-analizer:generate-architectural-report [--project-folder=PATH] [--output-folder=PATH] [--ignore-folders=LIST]
 ```
 
 **Parameters**:
@@ -41,19 +41,19 @@ Then install the Project Analyzer plugin:
 **Examples**:
 ```bash
 # Analyze entire project with default output location
-/generate-architectural-report
+/project-analizer:generate-architectural-report
 
 # Analyze specific folder
-/generate-architectural-report --project-folder=src
+/project-analizer:generate-architectural-report --project-folder=src
 
 # Custom output location
-/generate-architectural-report --output-folder=reports/analysis
+/project-analizer:generate-architectural-report --output-folder=reports/analysis
 
 # Exclude folders from analysis
-/generate-architectural-report --ignore-folders=node_modules,dist,test
+/project-analizer:generate-architectural-report --ignore-folders=node_modules,dist,test
 
 # Combined usage
-/generate-architectural-report --project-folder=src --output-folder=docs/reports --ignore-folders=node_modules,.git,dist
+/project-analizer:generate-architectural-report --project-folder=src --output-folder=docs/reports --ignore-folders=node_modules,.git,dist
 ```
 
 **Workflow**:
@@ -87,13 +87,13 @@ Then install the Project Analyzer plugin:
 
 ---
 
-### `/run-dependency-audit`
+### `/project-analizer:run-dependency-audit`
 
 **Description**: Runs a dependency audit on the project and generates a comprehensive report. Identifies outdated, deprecated, or legacy libraries, checks for vulnerabilities using CVE databases, and evaluates license compatibility.
 
 **Syntax**:
 ```bash
-/run-dependency-audit [--project-folder=PATH] [--output-folder=PATH] [--ignore-folders=LIST]
+/project-analizer:run-dependency-audit [--project-folder=PATH] [--output-folder=PATH] [--ignore-folders=LIST]
 ```
 
 **Parameters**:
@@ -104,19 +104,19 @@ Then install the Project Analyzer plugin:
 **Examples**:
 ```bash
 # Audit entire project (default: root folder)
-/run-dependency-audit
+/project-analizer:run-dependency-audit
 
 # Audit specific folder
-/run-dependency-audit --project-folder=src
+/project-analizer:run-dependency-audit --project-folder=src
 
 # Custom output location
-/run-dependency-audit --output-folder=reports/dependencies
+/project-analizer:run-dependency-audit --output-folder=reports/dependencies
 
 # Exclude specific folders
-/run-dependency-audit --ignore-folders=node_modules,venv,.env,.git
+/project-analizer:run-dependency-audit --ignore-folders=node_modules,venv,.env,.git
 
 # Combined usage
-/run-dependency-audit --project-folder=src --output-folder=reports --ignore-folders=node_modules,dist
+/project-analizer:run-dependency-audit --project-folder=src --output-folder=reports --ignore-folders=node_modules,dist
 ```
 
 **Output Structure**:
@@ -201,7 +201,7 @@ The Project Analyzer plugin includes three specialized agents:
 - Technical Debt & Risks
 - Test Coverage Analysis
 
-**Usage**: Invoked automatically by `/generate-architectural-report` for each component identified in the architectural analysis.
+**Usage**: Invoked automatically by `/project-analizer:generate-architectural-report` for each component identified in the architectural analysis.
 
 ### 3. Dependency Auditor
 
@@ -216,7 +216,7 @@ The Project Analyzer plugin includes three specialized agents:
 - Analyzes integration patterns
 - Identifies critical files depending on risky dependencies
 
-**Output**: Dependency Audit Report (see `/run-dependency-audit` section above)
+**Output**: Dependency Audit Report (see `/project-analizer:run-dependency-audit` section above)
 
 ---
 
@@ -267,13 +267,13 @@ Phase 5: Synthesis
 
 ```bash
 # Full analysis of entire project
-/generate-architectural-report
+/project-analizer:generate-architectural-report
 
 # Analyze specific folder
-/generate-architectural-report --project-folder=src/services
+/project-analizer:generate-architectural-report --project-folder=src/services
 
 # Custom output with exclusions
-/generate-architectural-report \
+/project-analizer:generate-architectural-report \
   --project-folder=src \
   --output-folder=reports/architecture \
   --ignore-folders=node_modules,dist,test,.git
@@ -283,23 +283,23 @@ Phase 5: Synthesis
 
 ```bash
 # Quick dependency check
-/run-dependency-audit
+/project-analizer:run-dependency-audit
 
 # Audit specific folder
-/run-dependency-audit --project-folder=backend
+/project-analizer:run-dependency-audit --project-folder=backend
 
 # Custom output location
-/run-dependency-audit --output-folder=reports/deps
+/project-analizer:run-dependency-audit --output-folder=reports/deps
 ```
 
 ### Incremental Analysis
 
 ```bash
 # Step 1: Dependency audit
-/run-dependency-audit --output-folder=reports
+/project-analizer:run-dependency-audit --output-folder=reports
 
 # Step 2: Full architectural analysis (uses dependency report)
-/generate-architectural-report --output-folder=reports
+/project-analizer:generate-architectural-report --output-folder=reports
 ```
 
 ---
@@ -370,7 +370,7 @@ docs/agents/dependency-auditor/                  # Default output
 | Component not found | Check component name spelling or run architectural analysis first |
 | Permission denied | Check file read permissions |
 | Analysis timeout | Use `--project-folder` to analyze smaller scope |
-| MANIFEST not found | Run `/generate-architectural-report` to create MANIFEST |
+| MANIFEST not found | Run `/project-analizer:generate-architectural-report` to create MANIFEST |
 
 ## Integration with Other Plugins
 
@@ -382,13 +382,13 @@ The Project Analyzer plugin works well with:
 Example workflow:
 ```bash
 # 1. Analyze architecture
-/generate-architectural-report
+/project-analizer:generate-architectural-report
 
 # 2. Document decisions
-/adr-map
-/adr-identify AUTH DATA API
+/adrs-management:adr-map
+/adrs-management:adr-identify AUTH DATA API
 
 # 3. Generate diagrams for key components
-/c4-generate docs/features/payment-fdd.md
+/diagrams-generator:c4-generate docs/features/payment-fdd.md
 ```
 

@@ -24,13 +24,13 @@ Then install the Diagrams Generator plugin:
 
 ## Available Commands
 
-### `/c4-generate`
+### `/diagrams-generator:c4-generate`
 
 **Description**: Generates C4 architecture diagrams (System Context, Container, Component, and Code levels) in PlantUML format from a Feature Design Document (FDD). Creates separate `.puml` files for each diagram level and an analysis markdown file.
 
 **Syntax**:
 ```bash
-/c4-generate <path-to-fdd.md> [output-folder] [--no-images]
+/diagrams-generator:c4-generate <path-to-fdd.md> [output-folder] [--no-images]
 ```
 
 **Parameters**:
@@ -41,16 +41,16 @@ Then install the Diagrams Generator plugin:
 **Examples**:
 ```bash
 # Generate C4 diagrams with default output location
-/c4-generate docs/features/payment-fdd.md
+/diagrams-generator:c4-generate docs/features/payment-fdd.md
 
 # Generate to custom output folder
-/c4-generate docs/features/auth-fdd.md docs/architecture/c4
+/diagrams-generator:c4-generate docs/features/auth-fdd.md docs/architecture/c4
 
 # Generate without PNG images
-/c4-generate docs/features/payment-fdd.md --no-images
+/diagrams-generator:c4-generate docs/features/payment-fdd.md --no-images
 
 # Generate with custom output and no images
-/c4-generate docs/features/notification-fdd.md output/c4 --no-images
+/diagrams-generator:c4-generate docs/features/notification-fdd.md output/c4 --no-images
 ```
 
 **Output Structure**:
@@ -83,13 +83,13 @@ Then install the Diagrams Generator plugin:
 
 ---
 
-### `/mermaid-generate`
+### `/diagrams-generator:mermaid-generate`
 
 **Description**: Generates technical Mermaid diagrams from Feature Design Documents (FDDs). Creates focused, meaningful diagrams (typically 6-8, up to 10 maximum) including sequence diagrams, flowcharts, class diagrams, and ER diagrams.
 
 **Syntax**:
 ```bash
-/mermaid-generate <path-to-fdd.md> [output-folder]
+/diagrams-generator:mermaid-generate <path-to-fdd.md> [output-folder]
 ```
 
 **Parameters**:
@@ -99,13 +99,13 @@ Then install the Diagrams Generator plugin:
 **Examples**:
 ```bash
 # Generate Mermaid diagrams with default output location
-/mermaid-generate docs/features/payment-fdd.md
+/diagrams-generator:mermaid-generate docs/features/payment-fdd.md
 
 # Generate to custom output folder
-/mermaid-generate docs/features/auth-fdd.md docs/diagrams/mermaid
+/diagrams-generator:mermaid-generate docs/features/auth-fdd.md docs/diagrams/mermaid
 
 # Generate from FDD in subdirectory
-/mermaid-generate docs/design/rate-limiter-fdd.md
+/diagrams-generator:mermaid-generate docs/design/rate-limiter-fdd.md
 ```
 
 **Output Structure**:
@@ -164,7 +164,7 @@ Then install the Diagrams Generator plugin:
 
 ```bash
 # Generate C4 diagrams for payment processing feature
-/c4-generate docs/features/payment-processing-fdd.md
+/diagrams-generator:c4-generate docs/features/payment-processing-fdd.md
 
 # Output:
 # - docs/c4/payment-processing-c1.puml (System Context)
@@ -179,7 +179,7 @@ Then install the Diagrams Generator plugin:
 
 ```bash
 # Generate Mermaid diagrams for authentication feature
-/mermaid-generate docs/features/authentication-fdd.md
+/diagrams-generator:mermaid-generate docs/features/authentication-fdd.md
 
 # Output:
 # - docs/mermaid/authentication-diagrams.md
@@ -191,17 +191,17 @@ Then install the Diagrams Generator plugin:
 
 ```bash
 # C4 diagrams to custom location
-/c4-generate docs/features/payment-fdd.md architecture/c4
+/diagrams-generator:c4-generate docs/features/payment-fdd.md architecture/c4
 
 # Mermaid diagrams to custom location
-/mermaid-generate docs/features/auth-fdd.md diagrams/mermaid
+/diagrams-generator:mermaid-generate docs/features/auth-fdd.md diagrams/mermaid
 ```
 
 ### Without PNG Generation
 
 ```bash
 # Generate C4 diagrams without PNG images (faster)
-/c4-generate docs/features/payment-fdd.md --no-images
+/diagrams-generator:c4-generate docs/features/payment-fdd.md --no-images
 ```
 
 ---
